@@ -18,7 +18,10 @@ export default function Page({params}) {
     const [viewType, setViewType] = useState("password");
     const router = useRouter();
     const user = useSession();
-    if (user.status === "authenticated") return router.push("/");
+    if (user.status === "authenticated") {
+        router.push("/");
+        return null;
+    }
 
     const handleSubmit = async () => {
         if (!email || !password) return toast.error(`Please enter your ${email ? "password" : "email address"}!`);

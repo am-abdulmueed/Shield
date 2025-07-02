@@ -20,7 +20,10 @@ export default function Page() {
     const user = useSession();
     const router = useRouter();
 
-    if (user.status === "authenticated") return router.push("/");
+    if (user.status === "authenticated") {
+        router.push("/");
+        return null;
+    }
     const handleSubmit = async () => {
         if (!email || !reqMeets) return toast.error(`Please enter ${email ? "a strong password!" : "your email address"}!`);
 
